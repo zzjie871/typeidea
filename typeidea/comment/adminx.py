@@ -1,7 +1,7 @@
-from django.contrib import admin
+import xadmin
 
 from .models import Comment
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
+@xadmin.sites.register(Comment)
+class CommentAdmin:
     list_display = ('target', 'nickname', 'content', 'website', 'created_time')

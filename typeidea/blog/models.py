@@ -2,7 +2,9 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
+import mistune
 
+from django.utils.functional import cached_property
 
 class Category(models.Model):
     STATUS_NORMAL = 1
@@ -72,8 +74,10 @@ class Post(models.Model):
 
     title = models.CharField(max_length=255, verbose_name="标题")
     desc = models.CharField(max_length=1024, blank=True, verbose_name="摘要")
-    content = models.TextField(verbose_name="名称", help_text="正文必须为MarkDown格式")
+    content = models.TextField(verbose_name="正文", help_text="正文必须为MarkDown格式")
+    content_html = models.TextField(verbose_name="正文html代码", blank=True, editable=False)
     status = models.PositiveIntegerField(default=STATUS_NORMAL, choices=STATUS_ITEMS, verbose_name="状态")
+    is_md = models.BooleanField(default=False, verbose_name="markdown语法")
     category = models.ForeignKey(Category, verbose_name="作者")
     tag = models.ManyToManyField(Tag, verbose_name="标签")
     owner = models.ForeignKey(User, verbose_name="作者")
@@ -81,6 +85,17 @@ class Post(models.Model):
 
     pv = models.PositiveIntegerField(default=1)
     uv = models.PositiveIntegerField(default=1)
+
+    def save(self, *args, **kwargs):
+        if self.is_md:
+            self.content_html = mistune.markdown(self.content)
+        else:
+            self.content_html = self.content
+        super().save(*args, **kwargs)
+
+    @cached_property
+    def tags(self):
+        return ','.join(self.tag.values_list('name', flat=True))
 
     class Meta:
         verbose_name = verbose_name_plural = '文章'

@@ -10,54 +10,98 @@ AdminSite	typeidea/custom_site.py	/^from django.contrib.admin import AdminSite$/
 AppConfig	blog/apps.py	/^from django.apps import AppConfig$/;"	i
 AppConfig	comment/apps.py	/^from django.apps import AppConfig$/;"	i
 AppConfig	config/apps.py	/^from django.apps import AppConfig$/;"	i
+AuthorView	blog/views.py	/^class AuthorView(IndexView):$/;"	c
 BASE_DIR	typeidea/settings/base.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
-BaseOwnerAdmin	blog/admin.py	/^from typeidea.base_admin import BaseOwnerAdmin$/;"	i
-BaseOwnerAdmin	config/admin.py	/^from typeidea.base_admin import BaseOwnerAdmin$/;"	i
-BaseOwnerAdmin	typeidea/base_admin.py	/^class BaseOwnerAdmin(admin.ModelAdmin):$/;"	c
+BaseOwnerAdmin	blog/adminx.py	/^from typeidea.base_admin import BaseOwnerAdmin$/;"	i
+BaseOwnerAdmin	config/adminx.py	/^from typeidea.base_admin import BaseOwnerAdmin$/;"	i
+BaseOwnerAdmin	typeidea/base_admin.py	/^class BaseOwnerAdmin(object):$/;"	c
 BlogConfig	blog/apps.py	/^class BlogConfig(AppConfig):$/;"	c
-Category	blog/admin.py	/^from .models import Post, Category, Tag$/;"	i
+Category	blog/adminx.py	/^from .models import Post, Category, Tag$/;"	i
 Category	blog/models.py	/^class Category(models.Model):$/;"	c
-Category	blog/views.py	/^from .models import Post, Tag, Category$/;"	i
-CategoryAdmin	blog/admin.py	/^class CategoryAdmin(BaseOwnerAdmin):$/;"	c
-CategoryOwnerFilter	blog/admin.py	/^class CategoryOwnerFilter(admin.SimpleListFilter):$/;"	c
-Comment	comment/admin.py	/^from .models import Comment$/;"	i
+Category	blog/views.py	/^from .models import Post, Category, Tag$/;"	i
+CategoryAdmin	blog/adminx.py	/^class CategoryAdmin(BaseOwnerAdmin):$/;"	c
+CategoryOwnerFilter	blog/adminx.py	/^class CategoryOwnerFilter(RelatedFieldListFilter):$/;"	c
+CategoryView	blog/views.py	/^class CategoryView(IndexView):$/;"	c
+Comment	blog/views.py	/^from comment.models import Comment$/;"	i
+Comment	comment/adminx.py	/^from .models import Comment$/;"	i
+Comment	comment/forms.py	/^from .models import Comment$/;"	i
 Comment	comment/models.py	/^class Comment(models.Model):$/;"	c
-CommentAdmin	comment/admin.py	/^class CommentAdmin(admin.ModelAdmin):$/;"	c
+Comment	comment/templatetags/comment_block.py	/^from comment.models import Comment$/;"	i
+Comment	config/models.py	/^        from comment.models import Comment$/;"	i
+CommentAdmin	comment/adminx.py	/^class CommentAdmin:$/;"	c
 CommentConfig	comment/apps.py	/^class CommentConfig(AppConfig):$/;"	c
+CommentForm	blog/views.py	/^from comment.forms import CommentForm$/;"	i
+CommentForm	comment/forms.py	/^class CommentForm(forms.ModelForm):$/;"	c
+CommentForm	comment/templatetags/comment_block.py	/^from comment.forms import CommentForm$/;"	i
+CommentForm	comment/views.py	/^from .forms import CommentForm$/;"	i
+CommentView	comment/views.py	/^class CommentView(TemplateView):$/;"	c
+CommentView	typeidea/urls.py	/^from comment.views import CommentView$/;"	i
+CommonViewMixin	blog/views.py	/^class CommonViewMixin:$/;"	c
+CommonViewMixin	config/views.py	/^from blog.views import CommonViewMixin$/;"	i
 ConfigConfig	config/apps.py	/^class ConfigConfig(AppConfig):$/;"	c
+Container	blog/adminx.py	/^from xadmin.layout import Row, Fieldset, Container$/;"	i
 CustomStite	typeidea/custom_site.py	/^class CustomStite(AdminSite):$/;"	c
 DATABASES	typeidea/settings/develop.py	/^DATABASES = {$/;"	v
 DEBUG	typeidea/settings/develop.py	/^DEBUG = True$/;"	v
-HttpResponse	config/views.py	/^from django.http import HttpResponse$/;"	i
+DISPLAY_COMMENT	config/models.py	/^    DISPLAY_COMMENT = 4$/;"	v	class:SideBar
+DISPLAY_HOT	config/models.py	/^    DISPLAY_HOT = 3$/;"	v	class:SideBar
+DISPLAY_HTML	config/models.py	/^    DISPLAY_HTML = 1$/;"	v	class:SideBar
+DISPLAY_LATEST	config/models.py	/^    DISPLAY_LATEST = 2$/;"	v	class:SideBar
+DetailView	blog/views.py	/^from django.views.generic import ListView, DetailView$/;"	i
+ExtendedRSSFeed	blog/rss.py	/^class ExtendedRSSFeed(Rss201rev2Feed):$/;"	c
+F	blog/views.py	/^from django.db.models import Q, F$/;"	i
+Feed	blog/rss.py	/^from django.contrib.syndication.views import Feed$/;"	i
+Fieldset	blog/adminx.py	/^from xadmin.layout import Row, Fieldset, Container$/;"	i
 INSTALLED_APPS	typeidea/settings/base.py	/^INSTALLED_APPS = [$/;"	v
+IndexView	blog/views.py	/^class IndexView(CommonViewMixin, ListView):$/;"	c
 LANGUAGE_CODE	typeidea/settings/base.py	/^LANGUAGE_CODE = 'zh-hans'$/;"	v
-Link	config/admin.py	/^from .models import Link, SideBar$/;"	i
+LatestPostFeed	blog/rss.py	/^class LatestPostFeed(Feed):$/;"	c
+LatestPostFeed	typeidea/urls.py	/^from blog.rss import LatestPostFeed$/;"	i
+Link	config/adminx.py	/^from .models import Link, SideBar$/;"	i
 Link	config/models.py	/^class Link(models.Model):$/;"	c
-LinkAdmin	config/admin.py	/^class LinkAdmin(BaseOwnerAdmin):$/;"	c
-LogEntry	blog/admin.py	/^from django.contrib.admin.models import LogEntry$/;"	i
-LogEntryAdmin	blog/admin.py	/^class LogEntryAdmin(admin.ModelAdmin):$/;"	c
+Link	config/views.py	/^from .models import Link$/;"	i
+LinkAdmin	config/adminx.py	/^class LinkAdmin(BaseOwnerAdmin):$/;"	c
+LinkListView	config/views.py	/^class LinkListView(CommonViewMixin, ListView):$/;"	c
+LinkListView	typeidea/urls.py	/^from config.views import LinkListView$/;"	i
+ListView	blog/views.py	/^from django.views.generic import ListView, DetailView$/;"	i
+ListView	config/views.py	/^from django.views.generic import ListView$/;"	i
+LogEntry	blog/adminx.py	/^from django.contrib.admin.models import LogEntry$/;"	i
+LogEntryAdmin	blog/adminx.py	/^class LogEntryAdmin:$/;"	c
 MIDDLEWARE	typeidea/settings/base.py	/^MIDDLEWARE = [$/;"	v
-Media	blog/admin.py	/^    class Media:$/;"	c	class:PostAdmin
 Meta	blog/models.py	/^    class Meta:$/;"	c	class:Category
 Meta	blog/models.py	/^    class Meta:$/;"	c	class:Post
 Meta	blog/models.py	/^    class Meta:$/;"	c	class:Tag
+Meta	comment/forms.py	/^    class Meta:$/;"	c	class:CommentForm
 Meta	comment/models.py	/^    class Meta:$/;"	c	class:Comment
 Meta	config/models.py	/^    class Meta:$/;"	c	class:Link
 Meta	config/models.py	/^    class Meta:$/;"	c	class:SideBar
 Migration	blog/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
 Migration	blog/migrations/0002_auto_20190601_1717.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	blog/migrations/0003_post_content_html.py	/^class Migration(migrations.Migration):$/;"	c
 Migration	comment/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	comment/migrations/0002_auto_20190703_2239.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	comment/migrations/0003_auto_20190707_2136.py	/^class Migration(migrations.Migration):$/;"	c
 Migration	config/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	config/migrations/0002_auto_20190707_2136.py	/^class Migration(migrations.Migration):$/;"	c
 NOQA	typeidea/settings/develop.py	/^from .base import * # NOQA$/;"	i
-Post	blog/admin.py	/^from .models import Post, Category, Tag$/;"	i
+Post	blog/adminx.py	/^from .models import Post, Category, Tag$/;"	i
 Post	blog/models.py	/^class Post(models.Model):$/;"	c
-Post	blog/views.py	/^from .models import Post, Tag, Category$/;"	i
-Post	comment/models.py	/^from blog.models import Post$/;"	i
-PostAdmin	blog/admin.py	/^class PostAdmin(BaseOwnerAdmin):$/;"	c
-PostAdminForm	blog/admin.py	/^from .adminforms import PostAdminForm$/;"	i
+Post	blog/rss.py	/^from .models import Post$/;"	i
+Post	blog/sitemap.py	/^from .models import Post$/;"	i
+Post	blog/views.py	/^from .models import Post, Category, Tag$/;"	i
+Post	config/models.py	/^        from blog.models import Post   # 避免循环引用$/;"	i
+PostAdmin	blog/adminx.py	/^class PostAdmin(BaseOwnerAdmin):$/;"	c
 PostAdminForm	blog/adminforms.py	/^class PostAdminForm(forms.ModelForm):$/;"	c
-PostInline	blog/admin.py	/^class PostInline(admin.TabularInline):   # 可选择继承自 admin.stackedInline, 以获取不同的展示样式$/;"	c
+PostAdminForm	blog/adminx.py	/^from .adminforms import PostAdminForm$/;"	i
+PostDetailView	blog/views.py	/^class PostDetailView(CommonViewMixin, DetailView):$/;"	c
+PostInline	blog/adminx.py	/^class PostInline:   # 可选择继承自 admin.stackedInline, 以获取不同的展示样式$/;"	c
+PostSitemap	blog/sitemap.py	/^class PostSitemap(Sitemap):$/;"	c
+PostSitemap	typeidea/urls.py	/^from blog.sitemap import PostSitemap$/;"	i
+Q	blog/views.py	/^from django.db.models import Q, F$/;"	i
 ROOT_URLCONF	typeidea/settings/base.py	/^ROOT_URLCONF = 'typeidea.urls'$/;"	v
+RelatedFieldListFilter	blog/adminx.py	/^from xadmin.filters import RelatedFieldListFilter$/;"	i
+Row	blog/adminx.py	/^from xadmin.layout import Row, Fieldset, Container$/;"	i
+Rss201rev2Feed	blog/rss.py	/^from django.utils.feedgenerator import Rss201rev2Feed$/;"	i
 SIDE_TYPE	config/models.py	/^    SIDE_TYPE = ($/;"	v	class:SideBar
 STATIC_URL	typeidea/settings/base.py	/^STATIC_URL = '\/static\/'$/;"	v
 STATUS_DELETE	blog/models.py	/^    STATUS_DELETE = 0$/;"	v	class:Category
@@ -79,50 +123,71 @@ STATUS_NORMAL	blog/models.py	/^    STATUS_NORMAL = 1$/;"	v	class:Tag
 STATUS_NORMAL	comment/models.py	/^    STATUS_NORMAL = 1$/;"	v	class:Comment
 STATUS_NORMAL	config/models.py	/^    STATUS_NORMAL = 1$/;"	v	class:Link
 STATUS_SHOW	config/models.py	/^    STATUS_SHOW = 1$/;"	v	class:SideBar
+SearchView	blog/views.py	/^class SearchView(IndexView):$/;"	c
 SideBar	blog/views.py	/^from config.models import SideBar$/;"	i
-SideBar	config/admin.py	/^from .models import Link, SideBar$/;"	i
+SideBar	config/adminx.py	/^from .models import Link, SideBar$/;"	i
 SideBar	config/models.py	/^class SideBar(models.Model):$/;"	c
-SideBarAdmin	config/admin.py	/^class SideBarAdmin(BaseOwnerAdmin):$/;"	c
+SideBarAdmin	config/adminx.py	/^class SideBarAdmin(BaseOwnerAdmin):$/;"	c
+Sitemap	blog/sitemap.py	/^from django.contrib.sitemaps import Sitemap$/;"	i
 TEMPLATES	typeidea/settings/base.py	/^TEMPLATES = [$/;"	v
+TEN_YEARS	blog/middleware/user_id.py	/^TEN_YEARS = 60 * 60 * 24 * 365 * 10$/;"	v
+THEME	typeidea/settings/base.py	/^THEME = 'bootstrap'$/;"	v
 TIME_ZONE	typeidea/settings/base.py	/^TIME_ZONE = 'Asia\/Shanghai'$/;"	v
-Tag	blog/admin.py	/^from .models import Post, Category, Tag$/;"	i
+Tag	blog/adminx.py	/^from .models import Post, Category, Tag$/;"	i
 Tag	blog/models.py	/^class Tag(models.Model):$/;"	c
-Tag	blog/views.py	/^from .models import Post, Tag, Category$/;"	i
-TagAdmin	blog/admin.py	/^class TagAdmin(BaseOwnerAdmin):$/;"	c
+Tag	blog/views.py	/^from .models import Post, Category, Tag$/;"	i
+TagAdmin	blog/adminx.py	/^class TagAdmin(BaseOwnerAdmin):$/;"	c
+TagView	blog/views.py	/^class TagView(IndexView):$/;"	c
+TemplateView	comment/views.py	/^from django.views.generic import TemplateView$/;"	i
 TestCase	blog/tests.py	/^from django.test import TestCase$/;"	i
 TestCase	comment/tests.py	/^from django.test import TestCase$/;"	i
 TestCase	config/tests.py	/^from django.test import TestCase$/;"	i
+USER_KEY	blog/middleware/user_id.py	/^USER_KEY = 'uid'$/;"	v
 USE_I18N	typeidea/settings/base.py	/^USE_I18N = True$/;"	v
 USE_L10N	typeidea/settings/base.py	/^USE_L10N = True$/;"	v
 USE_TZ	typeidea/settings/base.py	/^USE_TZ = True$/;"	v
 User	blog/models.py	/^from django.contrib.auth.models import User$/;"	i
 User	config/models.py	/^from django.contrib.auth.models import User$/;"	i
+UserIDMiddleware	blog/middleware/user_id.py	/^class UserIDMiddleware:$/;"	c
 WSGI_APPLICATION	typeidea/settings/base.py	/^WSGI_APPLICATION = 'typeidea.wsgi.application'$/;"	v
+__call__	blog/middleware/user_id.py	/^    def __call__(self, request):$/;"	m	class:UserIDMiddleware	file:
+__init__	blog/adminx.py	/^    def __init__(self, fiels, request, params, model, admin_view, field_path):$/;"	m	class:CategoryOwnerFilter
+__init__	blog/middleware/user_id.py	/^    def __init__(self, get_response):$/;"	m	class:UserIDMiddleware
 __str__	blog/models.py	/^    def __str__(self):$/;"	m	class:Category	file:
 __str__	blog/models.py	/^    def __str__(self):$/;"	m	class:Post	file:
 __str__	blog/models.py	/^    def __str__(self):$/;"	m	class:Tag	file:
-actions_on_bottom	blog/admin.py	/^    actions_on_bottom = True$/;"	v	class:PostAdmin
-actions_on_top	blog/admin.py	/^    actions_on_top = True$/;"	v	class:PostAdmin
-admin	blog/admin.py	/^from django.contrib import admin$/;"	i
-admin	comment/admin.py	/^from django.contrib import admin$/;"	i
-admin	config/admin.py	/^from django.contrib import admin$/;"	i
+__str__	config/models.py	/^    def __str__(self):$/;"	m	class:SideBar	file:
+_render_latest	config/models.py	/^    def _render_latest(self):$/;"	m	class:SideBar
+actions_on_bottom	blog/adminx.py	/^    actions_on_bottom = True$/;"	v	class:PostAdmin
+actions_on_top	blog/adminx.py	/^    actions_on_top = True$/;"	v	class:PostAdmin
+add_item_elements	blog/rss.py	/^    def add_item_elements(self, handler, item):$/;"	m	class:ExtendedRSSFeed
 admin	typeidea/base_admin.py	/^from django.contrib import admin$/;"	i
-admin	typeidea/urls.py	/^from django.contrib import admin$/;"	i
 application	typeidea/wsgi.py	/^application = get_wsgi_application()$/;"	v
+attrs	comment/forms.py	/^            attrs={'class': 'form-control', 'style': "width: 60%;"}$/;"	v	class:CommentForm
+cache	blog/views.py	/^from django.core.cache import cache$/;"	i
+cached_property	blog/models.py	/^from django.utils.functional import cached_property$/;"	i
 category	blog/models.py	/^    category = models.ForeignKey(Category, verbose_name="作者")$/;"	v	class:Post
+changefreq	blog/sitemap.py	/^    changefreq = "always"$/;"	v	class:PostSitemap
+clean_content	comment/forms.py	/^    def clean_content(self):$/;"	m	class:CommentForm
+comment_block	comment/templatetags/comment_block.py	/^def comment_block(target):$/;"	f
 content	blog/models.py	/^    content = models.TextField(verbose_name="名称", help_text="正文必须为MarkDown格式")$/;"	v	class:Post
+content	comment/forms.py	/^    content = forms.CharField($/;"	v	class:CommentForm
 content	comment/models.py	/^    content = models.CharField(max_length=2000, verbose_name="内容")$/;"	v	class:Comment
 content	config/models.py	/^    content = models.CharField(max_length=500, blank=True, verbose_name="内容",$/;"	v	class:SideBar
+content_html	blog/models.py	/^    content_html = models.TextField(verbose_name="正文html代码", blank=True, editable=False)$/;"	v	class:Post
+content_html	config/models.py	/^    def content_html(self):$/;"	m	class:SideBar
+context_object_name	blog/views.py	/^    context_object_name = 'post'$/;"	v	class:PostDetailView
+context_object_name	blog/views.py	/^    context_object_name ='post_list' $/;"	v	class:IndexView
+context_object_name	config/views.py	/^    context_object_name = 'link_list'$/;"	v	class:LinkListView
 created_time	blog/models.py	/^    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")$/;"	v	class:Category
 created_time	blog/models.py	/^    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")$/;"	v	class:Post
 created_time	blog/models.py	/^    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")$/;"	v	class:Tag
 created_time	comment/models.py	/^    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")$/;"	v	class:Comment
 created_time	config/models.py	/^    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")$/;"	v	class:Link
 created_time	config/models.py	/^    created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")$/;"	v	class:SideBar
-css	blog/admin.py	/^        css = {$/;"	v	class:PostAdmin.Media
-custom_site	blog/admin.py	/^from typeidea.custom_site import custom_site$/;"	i
+custom_site	blog/adminx.py	/^from typeidea.custom_site import custom_site$/;"	i
 custom_site	typeidea/custom_site.py	/^custom_site = CustomStite(name='cus_admin')$/;"	v
-custom_site	typeidea/urls.py	/^from .custom_site import custom_site$/;"	i
+date	blog/views.py	/^from datetime import date$/;"	i
 db	blog/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
 db	comment/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
 db	config/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
@@ -131,80 +196,138 @@ deletion	comment/migrations/0001_initial.py	/^import django.db.models.deletion$/
 deletion	config/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
 dependencies	blog/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
 dependencies	blog/migrations/0002_auto_20190601_1717.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	blog/migrations/0003_post_content_html.py	/^    dependencies = [$/;"	v	class:Migration
 dependencies	comment/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	comment/migrations/0002_auto_20190703_2239.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	comment/migrations/0003_auto_20190707_2136.py	/^    dependencies = [$/;"	v	class:Migration
 dependencies	config/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	config/migrations/0002_auto_20190707_2136.py	/^    dependencies = [$/;"	v	class:Migration
 desc	blog/adminforms.py	/^    desc = forms.CharField(widget=forms.Textarea, label='摘要', required=False)$/;"	v	class:PostAdminForm
 desc	blog/models.py	/^    desc = models.CharField(max_length=1024, blank=True, verbose_name="摘要")$/;"	v	class:Post
+description	blog/rss.py	/^    description = "typeidea is a blog system power by django"$/;"	v	class:LatestPostFeed
 display	config/models.py	/^    display = models.PositiveIntegerField(default=1,$/;"	v	class:SideBar
 django	blog/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
 django	comment/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
 django	config/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
 django	manage.py	/^            import django$/;"	i
+email	comment/forms.py	/^    email = forms.CharField($/;"	v	class:CommentForm
 email	comment/models.py	/^    email = models.EmailField(verbose_name="邮箱")$/;"	v	class:Comment
-exclude	blog/admin.py	/^    exclude = ('owner',)$/;"	v	class:PostAdmin
+exclude	blog/adminx.py	/^    exclude = ('owner',)$/;"	v	class:PostAdmin
 exclude	typeidea/base_admin.py	/^    exclude = ('owner',)$/;"	v	class:BaseOwnerAdmin
 execute_from_command_line	manage.py	/^        from django.core.management import execute_from_command_line$/;"	i
-extra	blog/admin.py	/^    extra = 1 # 控制额外多几个$/;"	v	class:PostInline
+extra	blog/adminx.py	/^    extra = 1 # 控制额外多几个$/;"	v	class:PostInline
+feef_type	blog/rss.py	/^    feef_type = Rss201rev2Feed$/;"	v	class:LatestPostFeed
 field	blog/migrations/0001_initial.py	/^            field=models.ManyToManyField(to='blog.Tag', verbose_name='标签'),$/;"	v	class:Migration
 field	blog/migrations/0002_auto_20190601_1717.py	/^            field=models.PositiveIntegerField(default=1),$/;"	v	class:Migration
-fields	blog/admin.py	/^    fields = ('name', 'status')$/;"	v	class:TagAdmin
-fields	blog/admin.py	/^    fields = ('name', 'status', 'is_nav')$/;"	v	class:CategoryAdmin
-fields	blog/admin.py	/^    fields = ('title', 'desc')$/;"	v	class:PostInline
+field	blog/migrations/0003_post_content_html.py	/^            field=models.TextField(blank=True, editable=False, verbose_name='正文html代码'),$/;"	v	class:Migration
+field	comment/migrations/0002_auto_20190703_2239.py	/^            field=models.CharField(max_length=100, verbose_name='评论目标'),$/;"	v	class:Migration
+field	comment/migrations/0003_auto_20190707_2136.py	/^            field=models.URLField(verbose_name='网站'),$/;"	v	class:Migration
+field	config/migrations/0002_auto_20190707_2136.py	/^            field=models.CharField(max_length=50, verbose_name='标题'),$/;"	v	class:Migration
+fields	blog/adminx.py	/^    fields = ('name', 'status')$/;"	v	class:TagAdmin
+fields	blog/adminx.py	/^    fields = ('name', 'status', 'is_nav')$/;"	v	class:CategoryAdmin
+fields	blog/adminx.py	/^    fields = ('title', 'desc')$/;"	v	class:PostInline
 fields	blog/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+fields	comment/forms.py	/^        fields = ['nickname', 'email', 'website', 'content']$/;"	v	class:CommentForm.Meta
 fields	comment/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
-fields	config/admin.py	/^    fields = ('title', 'display_type', 'content')$/;"	v	class:SideBarAdmin
-fields	config/admin.py	/^    fields = ('title', 'href', 'status', 'weight')$/;"	v	class:LinkAdmin
+fields	config/adminx.py	/^    fields = ('title', 'display_type', 'content')$/;"	v	class:SideBarAdmin
+fields	config/adminx.py	/^    fields = ('title', 'href', 'status', 'weight')$/;"	v	class:LinkAdmin
 fields	config/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
-fieldset	blog/admin.py	/^    fieldset = ($/;"	v	class:PostAdmin
-form	blog/admin.py	/^    form = PostAdminForm$/;"	v	class:PostAdmin
-format_html	blog/admin.py	/^from django.utils.html import format_html$/;"	i
+form	blog/adminx.py	/^    form = PostAdminForm$/;"	v	class:PostAdmin
+form_layout	blog/adminx.py	/^    form_layout = ($/;"	v	class:PostAdmin
+format_html	blog/adminx.py	/^from django.utils.html import format_html$/;"	i
 forms	blog/adminforms.py	/^from django import forms$/;"	i
+forms	comment/forms.py	/^from django import forms$/;"	i
+generate_uid	blog/middleware/user_id.py	/^    def generate_uid(self, request):$/;"	m	class:UserIDMiddleware
+get	blog/views.py	/^    def get(self, request, *args, **kwargs):$/;"	m	class:PostDetailView
 get_all	config/models.py	/^    def get_all(cls):$/;"	m	class:SideBar
 get_by_category	blog/models.py	/^    def get_by_category(category_id):$/;"	m	class:Post
 get_by_tag	blog/models.py	/^    def get_by_tag ( tag_id ):$/;"	m	class:Post
-get_navs	blog/models.py	/^    def get_navs(cls) :$/;"	m	class:Category
+get_by_target	comment/models.py	/^    def get_by_target(cls, target):$/;"	m	class:Comment
+get_context_data	blog/views.py	/^    def get_context_data(self):$/;"	m	class:SearchView
+get_context_data	blog/views.py	/^    def get_context_data(self, **kwargs):$/;"	m	class:CategoryView
+get_context_data	blog/views.py	/^    def get_context_data(self, **kwargs):$/;"	m	class:CommonViewMixin
+get_context_data	blog/views.py	/^    def get_context_data(self, **kwargs):$/;"	m	class:PostDetailView
+get_context_data	blog/views.py	/^    def get_context_data(self, **kwargs):$/;"	m	class:TagView
+get_navs	blog/models.py	/^    def get_navs(cls):$/;"	m	class:Category
+get_object_or_404	blog/views.py	/^from django.shortcuts import get_object_or_404$/;"	i
+get_queryset	blog/views.py	/^    def get_queryset(self):$/;"	m	class:AuthorView
+get_queryset	blog/views.py	/^    def get_queryset(self):$/;"	m	class:CategoryView
+get_queryset	blog/views.py	/^    def get_queryset(self):$/;"	m	class:SearchView
+get_queryset	blog/views.py	/^    def get_queryset(self):$/;"	m	class:TagView
 get_queryset	typeidea/base_admin.py	/^    def get_queryset(self, request):$/;"	m	class:BaseOwnerAdmin
 get_wsgi_application	typeidea/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	i
+handle_visited	blog/views.py	/^    def handle_visited(self):$/;"	m	class:PostDetailView
 help_text	config/models.py	/^                                          help_text="权重高展示顺序靠前")$/;"	v	class:Link
 help_text	config/models.py	/^                               help_text="如果设置的不是HTML类型,可为空")    $/;"	v	class:SideBar
 hot_posts	blog/models.py	/^    def hot_posts(cls) :$/;"	m	class:Post
 href	config/models.py	/^    href = models.URLField(verbose_name="链接") # 默认长度为200$/;"	v	class:Link
+http_method_names	comment/views.py	/^    http_method_names = ['post']$/;"	v	class:CommentView
+include	typeidea/urls.py	/^from django.conf.urls import url, include$/;"	i
 index_title	typeidea/custom_site.py	/^    index_title = '首页'$/;"	v	class:CustomStite
 initial	blog/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
 initial	comment/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
 initial	config/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
-inline	blog/admin.py	/^    inline = [PostInline, ]$/;"	v	class:CategoryAdmin
+inline	blog/adminx.py	/^    inline = [PostInline, ]$/;"	v	class:CategoryAdmin
 is_nav	blog/models.py	/^    is_nav = models.BooleanField(default=False, verbose_name="是否为导航")$/;"	v	class:Category
-js	blog/admin.py	/^        js = ('https:\/\/cdn.bootcss.com\/bootstrap\/4.0.0-beta.2\/css\/bootstrap.bundle.js',)$/;"	v	class:PostAdmin.Media
+item_content_html	blog/rss.py	/^    def item_content_html(self, item):$/;"	m	class:LatestPostFeed
+item_description	blog/rss.py	/^    def item_description(self, item):$/;"	m	class:LatestPostFeed
+item_extra_kwargs	blog/rss.py	/^    def item_extra_kwargs(self, item):$/;"	m	class:LatestPostFeed
+item_link	blog/rss.py	/^    def item_link(self, item):$/;"	m	class:LatestPostFeed
+item_title	blog/rss.py	/^    def item_title(self, item):$/;"	m	class:LatestPostFeed
+items	blog/rss.py	/^    def items(self):$/;"	m	class:LatestPostFeed
+items	blog/sitemap.py	/^    def items(self):$/;"	m	class:PostSitemap
+label	comment/forms.py	/^        label='Email',$/;"	v	class:CommentForm
+label	comment/forms.py	/^        label='内容',$/;"	v	class:CommentForm
+label	comment/forms.py	/^        label='昵称',$/;"	v	class:CommentForm
+label	comment/forms.py	/^        label='网站',$/;"	v	class:CommentForm
+lastmod	blog/sitemap.py	/^    def lastmod(self, obj):$/;"	m	class:PostSitemap
 latest_posts	blog/models.py	/^    def latest_posts(cls) :$/;"	m	class:Post
-links	config/views.py	/^def links(request):$/;"	f
-links	typeidea/urls.py	/^from config.views import links$/;"	i
-list_display	blog/admin.py	/^    list_display = ('name', 'status', 'created_time')$/;"	v	class:TagAdmin
-list_display	blog/admin.py	/^    list_display = ('name', 'status', 'owner', 'is_nav', 'created_time', 'post_count',)$/;"	v	class:CategoryAdmin
-list_display	blog/admin.py	/^    list_display = [$/;"	v	class:PostAdmin
-list_display	blog/admin.py	/^    list_display = ['object_repr', 'object_id', 'action_flag', 'user', 'change_message']$/;"	v	class:LogEntryAdmin
-list_display	comment/admin.py	/^    list_display = ('target', 'nickname', 'content', 'website', 'created_time')$/;"	v	class:CommentAdmin
-list_display	config/admin.py	/^    list_display = ('title', 'display', 'content', 'created_time')$/;"	v	class:SideBarAdmin
-list_display	config/admin.py	/^    list_display = ('title', 'href', 'status', 'weight', 'created_time')$/;"	v	class:LinkAdmin
-list_display_links	blog/admin.py	/^    list_display_links = []$/;"	v	class:PostAdmin
-list_filter	blog/admin.py	/^    list_filter = [CategoryOwnerFilter]$/;"	v	class:PostAdmin
-lookups	blog/admin.py	/^    def lookups(self, request, model_admin):$/;"	m	class:CategoryOwnerFilter
+link	blog/rss.py	/^    link = "\/rss\/"$/;"	v	class:LatestPostFeed
+list_display	blog/adminx.py	/^    list_display = ('name', 'status', 'created_time')$/;"	v	class:TagAdmin
+list_display	blog/adminx.py	/^    list_display = ('name', 'status', 'owner', 'is_nav', 'created_time', 'post_count',)$/;"	v	class:CategoryAdmin
+list_display	blog/adminx.py	/^    list_display = [$/;"	v	class:PostAdmin
+list_display	blog/adminx.py	/^    list_display = ['object_repr', 'object_id', 'action_flag', 'user', 'change_message']$/;"	v	class:LogEntryAdmin
+list_display	comment/adminx.py	/^    list_display = ('target', 'nickname', 'content', 'website', 'created_time')$/;"	v	class:CommentAdmin
+list_display	config/adminx.py	/^    list_display = ('title', 'display', 'content', 'created_time')$/;"	v	class:SideBarAdmin
+list_display	config/adminx.py	/^    list_display = ('title', 'href', 'status', 'weight', 'created_time')$/;"	v	class:LinkAdmin
+list_display_links	blog/adminx.py	/^    list_display_links = []$/;"	v	class:PostAdmin
+list_filter	blog/adminx.py	/^    list_filter = ['category'] # 注意这里不是定义d额filter类，而是字段名$/;"	v	class:PostAdmin
+location	blog/sitemap.py	/^    def location(self, obj):$/;"	m	class:PostSitemap
+manager	blog/adminx.py	/^from xadmin.filters import manager$/;"	i
+max_length	comment/forms.py	/^        max_length=100,$/;"	v	class:CommentForm
+max_length	comment/forms.py	/^        max_length=50,$/;"	v	class:CommentForm
+max_length	comment/forms.py	/^        max_length=500,$/;"	v	class:CommentForm
 migrations	blog/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
 migrations	blog/migrations/0002_auto_20190601_1717.py	/^from django.db import migrations, models$/;"	i
+migrations	blog/migrations/0003_post_content_html.py	/^from django.db import migrations, models$/;"	i
 migrations	comment/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+migrations	comment/migrations/0002_auto_20190703_2239.py	/^from django.db import migrations, models$/;"	i
+migrations	comment/migrations/0003_auto_20190707_2136.py	/^from django.db import migrations, models$/;"	i
 migrations	config/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
-model	blog/admin.py	/^    model = Post$/;"	v	class:PostInline
+migrations	config/migrations/0002_auto_20190707_2136.py	/^from django.db import migrations, models$/;"	i
+mistune	blog/models.py	/^import mistune$/;"	i
+mistune	comment/forms.py	/^import mistune$/;"	i
+model	blog/adminx.py	/^    model = Post$/;"	v	class:PostInline
+model	comment/forms.py	/^        model = Comment$/;"	v	class:CommentForm.Meta
 model_name	blog/migrations/0001_initial.py	/^            model_name='post',$/;"	v	class:Migration
 model_name	blog/migrations/0002_auto_20190601_1717.py	/^            model_name='post',$/;"	v	class:Migration
+model_name	blog/migrations/0003_post_content_html.py	/^            model_name='post',$/;"	v	class:Migration
+model_name	comment/migrations/0002_auto_20190703_2239.py	/^            model_name='comment',$/;"	v	class:Migration
+model_name	comment/migrations/0003_auto_20190707_2136.py	/^            model_name='comment',$/;"	v	class:Migration
+model_name	config/migrations/0002_auto_20190707_2136.py	/^            model_name='sidebar',$/;"	v	class:Migration
 models	blog/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
 models	blog/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
 models	blog/migrations/0002_auto_20190601_1717.py	/^from django.db import migrations, models$/;"	i
+models	blog/migrations/0003_post_content_html.py	/^from django.db import migrations, models$/;"	i
 models	blog/models.py	/^from django.db import models$/;"	i
 models	comment/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
 models	comment/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+models	comment/migrations/0002_auto_20190703_2239.py	/^from django.db import migrations, models$/;"	i
+models	comment/migrations/0003_auto_20190707_2136.py	/^from django.db import migrations, models$/;"	i
 models	comment/models.py	/^from django.db import models$/;"	i
 models	config/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
 models	config/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+models	config/migrations/0002_auto_20190707_2136.py	/^from django.db import migrations, models$/;"	i
 models	config/models.py	/^from django.db import models$/;"	i
 name	blog/apps.py	/^    name = 'blog'$/;"	v	class:BlogConfig
 name	blog/migrations/0001_initial.py	/^            name='Category',$/;"	v	class:Migration
@@ -213,19 +336,28 @@ name	blog/migrations/0001_initial.py	/^            name='Tag',$/;"	v	class:Migra
 name	blog/migrations/0001_initial.py	/^            name='tag',$/;"	v	class:Migration
 name	blog/migrations/0002_auto_20190601_1717.py	/^            name='pv',$/;"	v	class:Migration
 name	blog/migrations/0002_auto_20190601_1717.py	/^            name='uv',$/;"	v	class:Migration
+name	blog/migrations/0003_post_content_html.py	/^            name='content_html',$/;"	v	class:Migration
 name	blog/models.py	/^    name = models.CharField(max_length=10, verbose_name="名称")$/;"	v	class:Tag
 name	blog/models.py	/^    name = models.CharField(max_length=50, verbose_name="名称")$/;"	v	class:Category
 name	comment/apps.py	/^    name = 'comment'$/;"	v	class:CommentConfig
 name	comment/migrations/0001_initial.py	/^            name='Comment',$/;"	v	class:Migration
+name	comment/migrations/0002_auto_20190703_2239.py	/^            name='target',$/;"	v	class:Migration
+name	comment/migrations/0003_auto_20190707_2136.py	/^            name='website',$/;"	v	class:Migration
 name	config/apps.py	/^    name = 'config'$/;"	v	class:ConfigConfig
 name	config/migrations/0001_initial.py	/^            name='Link',$/;"	v	class:Migration
 name	config/migrations/0001_initial.py	/^            name='SideBar',$/;"	v	class:Migration
+name	config/migrations/0002_auto_20190707_2136.py	/^            name='title',$/;"	v	class:Migration
+nickname	comment/forms.py	/^    nickname = forms.CharField($/;"	v	class:CommentForm
 nickname	comment/models.py	/^    nickname = models.CharField(max_length=50, verbose_name="昵称")$/;"	v	class:Comment
 operations	blog/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
 operations	blog/migrations/0002_auto_20190601_1717.py	/^    operations = [$/;"	v	class:Migration
+operations	blog/migrations/0003_post_content_html.py	/^    operations = [$/;"	v	class:Migration
 operations	comment/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+operations	comment/migrations/0002_auto_20190703_2239.py	/^    operations = [$/;"	v	class:Migration
+operations	comment/migrations/0003_auto_20190707_2136.py	/^    operations = [$/;"	v	class:Migration
 operations	config/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
-operator	blog/admin.py	/^    def operator(self, obj):$/;"	m	class:PostAdmin
+operations	config/migrations/0002_auto_20190707_2136.py	/^    operations = [$/;"	v	class:Migration
+operator	blog/adminx.py	/^    def operator(self, obj):$/;"	m	class:PostAdmin
 options	blog/migrations/0001_initial.py	/^            options={$/;"	v	class:Migration
 options	comment/migrations/0001_initial.py	/^            options={$/;"	v	class:Migration
 options	config/migrations/0001_initial.py	/^            options={$/;"	v	class:Migration
@@ -238,48 +370,81 @@ owner	blog/models.py	/^    owner = models.ForeignKey(User, verbose_name="作者"
 owner	blog/models.py	/^    owner = models.ForeignKey(User, verbose_name="作者")$/;"	v	class:Tag
 owner	config/models.py	/^    owner = models.ForeignKey(User, verbose_name="作者")$/;"	v	class:Link
 owner	config/models.py	/^    owner = models.ForeignKey(User, verbose_name="作者")$/;"	v	class:SideBar
-parameter_name	blog/admin.py	/^    parameter_name = 'owner_category'$/;"	v	class:CategoryOwnerFilter
-post_count	blog/admin.py	/^    def post_count(self, obj):$/;"	m	class:CategoryAdmin
-post_detail	blog/views.py	/^def post_detail(request, post_id=None):$/;"	f
-post_detail	typeidea/urls.py	/^from blog.views import post_list, post_detail$/;"	i
-post_list	blog/views.py	/^def post_list(request, category_id=None, tag_id=None):$/;"	f
-post_list	typeidea/urls.py	/^from blog.views import post_list, post_detail$/;"	i
+paginate_by	blog/views.py	/^    paginate_by = 5$/;"	v	class:IndexView
+pk_url_kwarg	blog/views.py	/^    pk_url_kwarg = 'post_id'$/;"	v	class:PostDetailView
+post	comment/views.py	/^    def post(self, request, *args, **kwargs):$/;"	m	class:CommentView
+post_count	blog/adminx.py	/^    def post_count(self, obj):$/;"	m	class:CategoryAdmin
+prioriry	blog/sitemap.py	/^    prioriry = 1.0$/;"	v	class:PostSitemap
 profile	manage.py	/^    profile = os.environ.get('TYPEIDEA_PROFILE', 'develop')$/;"	v
 profile	typeidea/wsgi.py	/^profile = os.environ.get('TYPEIDEA_PROFILE', 'develop')$/;"	v
+protocol	blog/sitemap.py	/^    protocol = 'https'$/;"	v	class:PostSitemap
 pv	blog/models.py	/^    pv = models.PositiveIntegerField(default=1)$/;"	v	class:Post
-queryset	blog/admin.py	/^    def queryset(self, request, queryset):$/;"	m	class:CategoryOwnerFilter
-render	blog/views.py	/^from django.shortcuts import render$/;"	i
-render	comment/views.py	/^from django.shortcuts import render$/;"	i
-reverse	blog/admin.py	/^from django.urls import reverse$/;"	i
-save_model	blog/admin.py	/^    def save_model(self, request, obj, form, change):$/;"	m	class:PostAdmin
-save_model	typeidea/base_admin.py	/^    def save_model(self, request, obj, form, change):$/;"	m	class:BaseOwnerAdmin
-save_on_top	blog/admin.py	/^    save_on_top = True$/;"	v	class:PostAdmin
-search_fields	blog/admin.py	/^    search_fields = ['title', 'category__name']$/;"	v	class:PostAdmin
+queryset	blog/views.py	/^    queryset = Post.latest_posts()$/;"	v	class:IndexView
+queryset	blog/views.py	/^    queryset = Post.latest_posts()$/;"	v	class:PostDetailView
+queryset	config/views.py	/^    queryset = Link.objects.filter(status=Link.STATUS_NORMAL)$/;"	v	class:LinkListView
+redirect	comment/views.py	/^from django.shortcuts import redirect$/;"	i
+register	comment/templatetags/comment_block.py	/^register = template.Library()$/;"	v
+render_to_string	config/models.py	/^from django.template.loader import render_to_string$/;"	i
+reverse	blog/adminx.py	/^from django.urls import reverse$/;"	i
+reverse	blog/rss.py	/^from django.urls import reverse$/;"	i
+reverse	blog/sitemap.py	/^from django.urls import reverse$/;"	i
+save	blog/models.py	/^    def save(self, *args, **kwargs):$/;"	m	class:Post
+save_models	blog/adminx.py	/^    def save_models(self, request, obj, form, change):$/;"	m	class:PostAdmin
+save_models	typeidea/base_admin.py	/^    def save_models(self, request, obj, form, change):$/;"	m	class:BaseOwnerAdmin
+save_on_top	blog/adminx.py	/^    save_on_top = True$/;"	v	class:PostAdmin
+search_fields	blog/adminx.py	/^    search_fields = ['title', 'category__name']$/;"	v	class:PostAdmin
 settings	blog/migrations/0001_initial.py	/^from django.conf import settings$/;"	i
 settings	config/migrations/0001_initial.py	/^from django.conf import settings$/;"	i
+settings	typeidea/urls.py	/^from django.conf import settings$/;"	i
 site_header	typeidea/custom_site.py	/^    site_header = 'Typeidea'$/;"	v	class:CustomStite
 site_title	typeidea/custom_site.py	/^    site_title = 'Typeidea 管理后台'$/;"	v	class:CustomStite
-status	blog/models.py	/^    status = models.PositiveIntegerField(default=STATUS_NORMAL,$/;"	v	class:Category
-status	blog/models.py	/^    status = models.PositiveIntegerField(default=STATUS_NORMAL,$/;"	v	class:Post
-status	blog/models.py	/^    status = models.PositiveIntegerField(default=STATUS_NORMAL,$/;"	v	class:Tag
+sitemap_views	typeidea/urls.py	/^from django.contrib.sitemaps import views as sitemap_views$/;"	i
+static	typeidea/urls.py	/^from django.conf.urls.static import static$/;"	i
+status	blog/models.py	/^    status = models.PositiveIntegerField(default=STATUS_NORMAL, choices=STATUS_ITEMS, verbose_name="状态")$/;"	v	class:Category
+status	blog/models.py	/^    status = models.PositiveIntegerField(default=STATUS_NORMAL, choices=STATUS_ITEMS, verbose_name="状态")$/;"	v	class:Post
+status	blog/models.py	/^    status = models.PositiveIntegerField(default=STATUS_NORMAL, choices=STATUS_ITEMS, verbose_name="状态")$/;"	v	class:Tag
 status	comment/models.py	/^    status = models.PositiveIntegerField(default=STATUS_NORMAL,$/;"	v	class:Comment
 status	config/models.py	/^    status = models.PositiveIntegerField(default=STATUS_NORMAL, choices=STATUS_ITEMS, $/;"	v	class:Link
 status	config/models.py	/^    status = models.PositiveIntegerField(default=STATUS_SHOW, choices=STATUS_ITEMS, $/;"	v	class:SideBar
 sys	manage.py	/^import sys$/;"	i
 tag	blog/models.py	/^    tag = models.ManyToManyField(Tag, verbose_name="标签")$/;"	v	class:Post
-target	comment/models.py	/^    target = models.ForeignKey(Post, verbose_name="评论目标")$/;"	v	class:Comment
-title	blog/admin.py	/^    title = "分类过滤器"$/;"	v	class:CategoryOwnerFilter
+tags	blog/models.py	/^    def tags(self):$/;"	m	class:Post
+target	comment/models.py	/^    target = models.CharField(max_length=100, verbose_name="评论目标")$/;"	v	class:Comment
+template	comment/templatetags/comment_block.py	/^from django import template$/;"	i
+template_name	blog/views.py	/^    template_name = 'blog\/detail.html'$/;"	v	class:PostDetailView
+template_name	blog/views.py	/^    template_name = 'blog\/list.html' $/;"	v	class:IndexView
+template_name	comment/views.py	/^    template_name = 'comment\/result.html'$/;"	v	class:CommentView
+template_name	config/views.py	/^    template_name = 'config\/links.html'$/;"	v	class:LinkListView
+test	blog/adminx.py	/^    def test(cls, field, request, params, model, admin_view, field_path):$/;"	m	class:CategoryOwnerFilter
 title	blog/models.py	/^    title = models.CharField(max_length=255, verbose_name="标题")$/;"	v	class:Post
-title	config/models.py	/^    title = models.CharField(max_length=10, verbose_name="标题")$/;"	v	class:SideBar
+title	blog/rss.py	/^    title = "Typeidea Blog System"$/;"	v	class:LatestPostFeed
 title	config/models.py	/^    title = models.CharField(max_length=50, verbose_name="标题")$/;"	v	class:Link
+title	config/models.py	/^    title = models.CharField(max_length=50, verbose_name="标题")$/;"	v	class:SideBar
 unicode_literals	blog/migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	i
 unicode_literals	blog/migrations/0002_auto_20190601_1717.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	blog/migrations/0003_post_content_html.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	blog/models.py	/^from __future__ import unicode_literals$/;"	i
 unicode_literals	comment/migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	comment/migrations/0002_auto_20190703_2239.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	comment/migrations/0003_auto_20190707_2136.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	comment/models.py	/^from __future__ import unicode_literals$/;"	i
 unicode_literals	config/migrations/0001_initial.py	/^from __future__ import unicode_literals$/;"	i
-url	typeidea/urls.py	/^from django.conf.urls import url$/;"	i
+unicode_literals	config/migrations/0002_auto_20190707_2136.py	/^from __future__ import unicode_literals$/;"	i
+unicode_literals	config/models.py	/^from __future__ import unicode_literals$/;"	i
+url	typeidea/urls.py	/^from django.conf.urls import url, include$/;"	i
 urlpatterns	typeidea/urls.py	/^urlpatterns = [$/;"	v
+uuid	blog/middleware/user_id.py	/^import uuid$/;"	i
 uv	blog/models.py	/^    uv = models.PositiveIntegerField(default=1)$/;"	v	class:Post
 verbose_name	config/models.py	/^                                         verbose_name="状态")$/;"	v	class:Link
 verbose_name	config/models.py	/^                                         verbose_name="状态")$/;"	v	class:SideBar
-website	comment/models.py	/^    website = models.URLField(verbose_name="wangzhan")$/;"	v	class:Comment
+website	comment/forms.py	/^    website = forms.CharField($/;"	v	class:CommentForm
+website	comment/models.py	/^    website = models.URLField(verbose_name="网站")$/;"	v	class:Comment
 weight	config/models.py	/^    weight = models.PositiveIntegerField(default=1, choices=zip(range(1,6),$/;"	v	class:Link
+widget	comment/forms.py	/^        widget=forms.widgets.EmailInput($/;"	v	class:CommentForm
+widget	comment/forms.py	/^        widget=forms.widgets.Input($/;"	v	class:CommentForm
+widget	comment/forms.py	/^        widget=forms.widgets.TextInput($/;"	v	class:CommentForm
+widget	comment/forms.py	/^        widget=forms.widgets.URLInput($/;"	v	class:CommentForm
+xadmin	blog/adminx.py	/^import xadmin$/;"	i
+xadmin	comment/adminx.py	/^import xadmin$/;"	i
+xadmin	config/adminx.py	/^import xadmin$/;"	i
+xadmin	typeidea/urls.py	/^import xadmin$/;"	i
